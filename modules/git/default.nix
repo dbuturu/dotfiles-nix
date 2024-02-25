@@ -8,10 +8,10 @@ in {
     config = mkIf cfg.enable {
         programs.git = {
             enable = true;
-            userName = "notusknot";
-            userEmail = "notusknot@gmail.com";
+            userName = "saberzero1";
+            userEmail = "github@emilebangma.com";
             extraConfig = {
-                init = { defaultBranch = "main"; };
+                init = { defaultBranch = "master"; };
                 core = {
                     excludesfile = "$NIXOS_CONFIG_DIR/scripts/gitignore";
                 };
