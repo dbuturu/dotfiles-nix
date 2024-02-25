@@ -152,5 +152,5 @@
     };
 
     # Do not touch
-    system.stateVersion = "23.11";
+    system.stateVersion = "20.09";
 }
