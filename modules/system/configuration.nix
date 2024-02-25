@@ -45,7 +45,7 @@
     # Nix settings, auto cleanup and enable flakes
     nix = {
         settings.auto-optimise-store = true;
-        settings.allowed-users = [ "notus" ];
+        settings.allowed-users = [ "saberzero1" ];
         gc = {
             automatic = true;
             dates = "weekly";
@@ -70,7 +70,7 @@
     };
 
     # Set up locales (timezone and keyboard layout)
-    time.timeZone = "America/Los_Angeles";
+    time.timeZone = "Europe/Amsterdam";
     i18n.defaultLocale = "en_US.UTF-8";
     console = {
         font = "Lat2-Terminus16";
@@ -78,7 +78,7 @@
     };
 
     # Set up user and enable sudo
-    users.users.notus = {
+    users.users.saberzero1 = {
         isNormalUser = true;
         extraGroups = [ "input" "wheel" ];
         shell = pkgs.zsh;
@@ -117,7 +117,7 @@
         doas = {
             enable = true;
             extraRules = [{
-                users = [ "notus" ];
+                users = [ "saberzero1" ];
                 keepEnv = true;
                 persist = true;
             }];
@@ -152,5 +152,5 @@
     };
 
     # Do not touch
-    system.stateVersion = "20.09";
+    system.stateVersion = "23.11";
 }
