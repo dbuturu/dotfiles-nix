@@ -6,29 +6,42 @@ end
 
 
 if vim.g.vscode then
-  require "vscode"
+    require "vscode"
 else
-  require "core"
+    -- Autocmds
+    vim.cmd [[
+    augroup CursorLine
+        au!
+        au VimEnter * setlocal cursorline
+        au WinEnter * setlocal cursorline
+        au BufWinEnter * setlocal cursorline
+        au WinLeave * setlocal nocursorline
+    augroup END
 
-  local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
+    autocmd FileType nix setlocal shiftwidth=4
+    ]]
+
+    require "core"
+
+    local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
 
-  if custom_init_path then
-    dofile(custom_init_path)
-  end
+    if custom_init_path then
+        dofile(custom_init_path)
+    end
 
-  require("core.utils").load_mappings()
+    require("core.utils").load_mappings()
 
-  local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+    local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-  -- bootstrap lazy.nvim!
-  if not vim.loop.fs_stat(lazypath) then
-    require("core.bootstrap").gen_chadrc_template()
-    require("core.bootstrap").lazy(lazypath)
-  end
+    -- bootstrap lazy.nvim!
+    if not vim.loop.fs_stat(lazypath) then
+        require("core.bootstrap").gen_chadrc_template()
+        require("core.bootstrap").lazy(lazypath)
+    end
 
-  dofile(vim.g.base46_cache .. "defaults")
-  vim.opt.rtp:prepend(lazypath)
-  require "plugins"
+    dofile(vim.g.base46_cache .. "defaults")
+    vim.opt.rtp:prepend(lazypath)
+    require "plugins"
 end
 
