@@ -1,0 +1,32 @@
+:root {
+  --asvetliakov-insert: #d37ded;
+  --asvetliakov-visual: #9fbaf4;
+  --asvetliakov-visual-block: #cddbf9;
+  --asvetliakov-visual-line: #7199ef;
+  --asvetliakov-replace: #8bc46e;
+  --asvetliakov-normal: #78a3c4;
+}
+
+[aria-label^="-- NORMAL --"] {
+  background-color: var(--asvetliakov-normal) !important;
+}
+
+[aria-label^="-- INSERT --"] {
+  background-color: var(--asvetliakov-insert) !important;
+}
+
+[aria-label^="-- VISUAL --"] {
+  background-color: var(--asvetliakov-visual) !important;
+}
+
+[aria-label^="-- VISUAL LINE --"] {
+  background-color: var(--asvetliakov-visual-line) !important;
+}
+
+[aria-label^="-- VISUAL BLOCK --"] {
+  background-color: var(--asvetliakov-visual-block) !important;
+}
+
+[aria-label^="-- REPLACE --"] {
+  background-color: var(--asvetliakov-replace) !important;
+}
