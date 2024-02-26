@@ -62,10 +62,10 @@
     boot = {
         cleanTmpDir = true;
         loader = {
-        systemd-boot.enable = true;
-        systemd-boot.editor = false;
-        efi.canTouchEfiVariables = true;
-        timeout = 0;
+            systemd-boot.enable = true;
+            systemd-boot.editor = false;
+            efi.canTouchEfiVariables = true;
+            timeout = 0;
         };
     };
 
@@ -149,6 +149,13 @@
             enable = true;
             driSupport = true;
         };
+    };
+
+    programs.hyprland = {
+        # Install the packages from nixpkgs
+        enable = true;
+        # Whether to enable XWayland
+        xwayland.enable = true;
     };
 
     # Do not touch

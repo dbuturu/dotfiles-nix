@@ -112,3 +112,11 @@ And that should be it! If there are any issues please don't hesistate to [submit
 
 ## Conclusion
 And thats about it for my configuration. The code is registered under the MIT license, meaning you are allowed to use or distribute the code as you please, and if you need any help or have any suggestions, you can reach me on Discord at `notusknot#5622` or email me at `notusknot@pm.me`.
+
+<!--
+Naming:
+
+https://megaman.fandom.com/wiki/Cyber-elf
+
+https://megaman.fandom.com/wiki/Croire
+-->

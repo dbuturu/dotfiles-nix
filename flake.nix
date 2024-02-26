@@ -62,6 +62,7 @@
                 #laptop = mkSystem inputs.nixpkgs "x86_64-linux" "laptop";
                 # desktop = mkSystem inputs.nixpkgs "x86_64-linux" "desktop";
                 laptop-hp = mkSystem inputs.nixpkgs "x86_64-linux" "laptop-hp";
+                nouvelle = mkSystem inputs.nixpkgs "x86_64-linux" "nouvelle";
             };
     };
 }
