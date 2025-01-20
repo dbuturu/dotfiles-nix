@@ -14,6 +14,8 @@
             url = "github:nix-community/NUR";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+	
     };
 
     # All outputs for the system (configs)
@@ -31,11 +33,12 @@
                     system = system;
                     modules = [
                         { networking.hostName = hostname; }
+                        ./hosts/yourComputer/hardware-configuration.nix
                         # General configuration (users, networking, sound, etc)
                         ./modules/system/configuration.nix
                         # Hardware config (bootloader, kernel modules, filesystems, etc)
                         # DO NOT USE MY HARDWARE CONFIG!! USE YOUR OWN!!
-                        (./. + "/hosts/${hostname}/hardware-configuration.nix")
+                        # (./. + "/hosts/${hostname}/hardware-configuration.nix")
                         home-manager.nixosModules.home-manager
                         {
                             home-manager = {
@@ -58,11 +61,12 @@
         in {
             nixosConfigurations = {
                 # Now, defining a new system is can be done in one line
-                #                                Architecture   Hostname
-                #laptop = mkSystem inputs.nixpkgs "x86_64-linux" "laptop";
-                # desktop = mkSystem inputs.nixpkgs "x86_64-linux" "desktop";
-                laptop-hp = mkSystem inputs.nixpkgs "x86_64-linux" "laptop-hp";
-                nouvelle = mkSystem inputs.nixpkgs "x86_64-linux" "nouvelle";
+                #                                      Architecture   Hostname
+                # laptop = mkSystem inputs.nixpkgs     "x86_64-linux" "laptop";
+                # desktop = mkSystem inputs.nixpkgs    "x86_64-linux" "desktop";
+                # laptop-hp = mkSystem inputs.nixpkgs  "x86_64-linux" "laptop-hp";
+                # nouvelle = mkSystem inputs.nixpkgs   "x86_64-linux" "nouvelle";
+		yourComputer = mkSystem inputs.nixpkgs "x86_64-linux" "yourComputer";
             };
     };
 }

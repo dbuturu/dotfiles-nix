@@ -117,7 +117,7 @@
         doas = {
             enable = true;
             extraRules = [{
-                users = [ "saberzero1" ];
+                users = [ "dbuturu" ];
                 keepEnv = true;
                 persist = true;
             }];
@@ -144,7 +144,7 @@
     
     # Disable bluetooth, enable pulseaudio, enable opengl (for Wayland)
     hardware = {
-        bluetooth.enable = false;
+        bluetooth.enable = true;
         opengl = {
             enable = true;
             driSupport = true;
@@ -159,5 +159,5 @@
     };
 
     # Do not touch
-    system.stateVersion = "20.09";
+    system.stateVersion = "24.11";
 }
