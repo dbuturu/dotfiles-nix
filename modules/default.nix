@@ -1,7 +1,7 @@
 { inputs, pkgs, config, ... }:
 
 {
-    home.stateVersion = "21.09";
+    home.stateVersion = "24.11";
     imports = [
         # gui
         ./firefox

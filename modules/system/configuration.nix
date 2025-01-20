@@ -38,14 +38,13 @@
                 xdg-desktop-portal-wlr
                 xdg-desktop-portal-gtk
             ];
-            gtkUsePortal = true;
         };
     };
 
     # Nix settings, auto cleanup and enable flakes
     nix = {
         settings.auto-optimise-store = true;
-        settings.allowed-users = [ "saberzero1" ];
+        settings.allowed-users = [ "dbuturu" ];
         gc = {
             automatic = true;
             dates = "weekly";
@@ -70,15 +69,15 @@
     };
 
     # Set up locales (timezone and keyboard layout)
-    time.timeZone = "Europe/Amsterdam";
+    time.timeZone = "Africa/Nairobi";
     i18n.defaultLocale = "en_US.UTF-8";
     console = {
         font = "Lat2-Terminus16";
-        keyMap = "us";
+        keyMap = "jp";
     };
 
     # Set up user and enable sudo
-    users.users.saberzero1 = {
+    users.users.dbuturu = {
         isNormalUser = true;
         extraGroups = [ "input" "wheel" ];
         shell = pkgs.zsh;
@@ -128,11 +127,7 @@
     };
 
     # Sound
-    sound = {
-        enable = true;
-    };
 
-    hardware.pulseaudio.enable = true;
     security.rtkit.enable = true;
 
     services.pipewire = {
@@ -147,7 +142,6 @@
         bluetooth.enable = true;
         opengl = {
             enable = true;
-            driSupport = true;
         };
     };
 
