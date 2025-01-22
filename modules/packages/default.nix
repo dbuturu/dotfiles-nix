@@ -11,16 +11,37 @@ in {
     options.modules.packages = { enable = mkEnableOption "packages"; };
     config = mkIf cfg.enable {
     	home.packages = with pkgs; [
-            ripgrep ffmpeg tealdeer
-            exa htop fzf
+            ripgrep tealdeer
+            exa htop
             pass gnupg bat
-            unzip lowdown zk
+            lowdown zk
             grim slurp slop
-            imagemagick age libnotify
-            git python3 lua zig 
-            mpv firefox pqiv
+            imagemagick age
+            python3 lua zig  pqiv
             screen bandw maintenance
-            wf-recorder anki-bin 
+            wf-recorder anki-bin #arkenfox-user.js #exfat-utils
+            eww #gtk-theme-arc-gruvbox-git #hyprpaper
+            #libertinus-font #maim #"can take quick screenshots at your request." #mutt-wizard-git
+            #nsixv #ntfs-3g #task-spooler
+            #tesseract-data-eng #ttf-dejavu #ttf-font-awesome
+            #zathura-pdf-mupdf #zsh-fast-syntax-highlighting-git abook
+            ani-cli arandr atool
+            bc bluetui btop
+            calcurse clipboard-jh cups
+            dosfstools dunst ffmpeg
+            ffmpegthumbnailer firefox fzf
+            git git-lfs gitAndTools.delta gitAndTools.gh gitAndTools.git-fame
+            gnome-keyring greetd.regreet hyprland kitty
+            lf libnotify libreoffice
+            lynx mediainfo mindustry moreutils
+            mpc mpd mpv
+            ncmpcpp neomutt neovim
+            networkmanagerapplet noto-fonts noto-fonts-emoji
+            poppler pulsemixer sc-im
+            simple-mtpfs slock socat
+            swww tesseract unzip
+            vscode wireplumber wofi
+            yt-dlp zathura zsh
         ];
     };
 }

@@ -46,7 +46,7 @@
                                 useGlobalPkgs = true;
                                 extraSpecialArgs = { inherit inputs; };
                                 # Home manager config (configures programs like firefox, zsh, eww, etc)
-                                users.saberzero1 = (./. + "/hosts/${hostname}/user.nix");
+                                users.dbuturu = (./. + "/hosts/${hostname}/user.nix");
                             };
                             nixpkgs.overlays = [
                                 # Add nur overlay for Firefox addons

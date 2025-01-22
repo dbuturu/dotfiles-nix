@@ -22,7 +22,7 @@ in {
             ];
 
             # Privacy about:config settings
-            profiles.saberzero1 = {
+            profiles.dbuturu = {
                 settings = {
                     "browser.send_pings" = false;
                     "browser.urlbar.speculativeConnect.enabled" = false;
