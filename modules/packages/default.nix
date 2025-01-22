@@ -12,7 +12,7 @@ in {
     config = mkIf cfg.enable {
     	home.packages = with pkgs; [
             ripgrep tealdeer
-            exa htop
+            eza htop
             pass gnupg bat
             lowdown zk
             grim slurp slop
