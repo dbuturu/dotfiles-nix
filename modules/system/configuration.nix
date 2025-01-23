@@ -5,6 +5,7 @@
     environment.defaultPackages = [ ];
     services.xserver.desktopManager.xterm.enable = false;
 
+    nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
 
     # Laptop-specific packages (the other ones are installed in `packages.nix`)
