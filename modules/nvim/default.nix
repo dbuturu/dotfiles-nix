@@ -19,7 +19,7 @@ in {
         home.file.".config/nvim/settings.lua".source = ./init.lua;
         
         home.packages = with pkgs; [
-            rnix-lsp nixfmt # Nix
+            nixfmt # rnix-lsp # Nix
             sumneko-lua-language-server stylua # Lua
         ];
 
