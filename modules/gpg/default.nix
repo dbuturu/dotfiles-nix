@@ -13,7 +13,7 @@ in {
         # Fix pass
         services.gpg-agent = {
             enable = true;
-            pinentryPackage = "qt";
+            pinentryPackage = pkgs.pinentry-qt;
         };
     };
 }

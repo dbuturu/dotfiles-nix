@@ -74,7 +74,6 @@
     i18n.defaultLocale = "en_US.UTF-8";
     console = {
         font = "Lat2-Terminus16";
-        keyMap = "jp";
     };
 
     # Set up user and enable sudo
@@ -82,8 +81,26 @@
         isNormalUser = true;
         extraGroups = [ "input" "wheel" ];
         shell = pkgs.zsh;
+        packages = with pkgs.gitAndTools; [
+            git-absorb    # Auto-squash feature branch commits
+            git-extras    # Additional Git commands
+            git-open      # Open repository in browser
+        ];
     };
+    
+    # Enable networking
+    networking.networkmanager.enable = true;
+  
+    networking.nameservers = [ "45.90.28.0#f6f6f3.dns.nextdns.io" "45.90.30.0#f6f6f3.dns.nextdns.io" ];
 
+    services.resolved = {
+        enable = true;
+        dnssec = "true";
+        domains = [ "~." ];
+        fallbackDns = [ "45.90.28.0#f6f6f3.dns.nextdns.io" "45.90.30.0#f6f6f3.dns.nextdns.io" ];
+        dnsovertls = "true";
+    };
+ 
     # Set up networking and secure it
     networking = {
         wireless.iwd.enable = true;
@@ -104,13 +121,20 @@
         GTK_RC_FILES = "$HOME/.local/share/gtk-1.0/gtkrc";
         GTK2_RC_FILES = "$HOME/.local/share/gtk-2.0/gtkrc";
         MOZ_ENABLE_WAYLAND = "1";
-        ZK_NOTEBOOK_DIR = "$HOME/stuff/notes/";
+        ZK_NOTEBOOK_DIR = "$HOME/notes/";
         EDITOR = "nvim";
         DIRENV_LOG_FORMAT = "";
         ANKI_WAYLAND = "1";
         DISABLE_QT5_COMPAT = "0";
     };
 
+    environment.sessionVariables = {
+        # If your cursor becomes invisible
+        WLR_NO_HARDWARE_CURSORS = "1";
+        # Hint electron apps to use wayland
+        NIXOS_OZONE_WL = "1";
+    };
+    
     # Security 
     security = {
         sudo.enable = false;
@@ -132,7 +156,7 @@
     security.rtkit.enable = true;
 
     services.pipewire = {
-        enable = false;
+        enable = true;
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
@@ -144,6 +168,9 @@
         opengl = {
             enable = true;
         };
+        graphics.enable = true;
+        nvidia.modesetting.enable = true;
+        uinput.enable = true;
     };
 
     programs.hyprland = {
@@ -152,6 +179,15 @@
         # Whether to enable XWayland
         xwayland.enable = true;
     };
+    programs.regreet.enable=true;
+
+    services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+    };
+    
+    services.printing.enable = true;
 
     # Do not touch
     system.stateVersion = "24.11";

@@ -24,7 +24,7 @@ in {
                 PROMPT="%F{blue}%m %~%b "$'\n'"%(?.%F{green}%Bλ%b |.%F{red}?) %f"
 
                 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store";
-                export ZK_NOTEBOOK_DIR="~/stuff/notes";
+                export ZK_NOTEBOOK_DIR="~/notes";
                 export DIRENV_LOG_FORMAT="";
                 bindkey '^ ' autosuggest-accept
 
@@ -38,7 +38,7 @@ in {
                 dots = "$HOME/.config/nixos";
                 stuff = "$HOME/stuff";
                 media = "/run/media/$USER";
-                junk = "$HOME/stuff/other";
+                junk = "$HOME/other";
             };
 
             # Tweak settings for history

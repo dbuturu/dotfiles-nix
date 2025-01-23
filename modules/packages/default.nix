@@ -29,19 +29,19 @@ in {
             bc bluetui btop
             calcurse clipboard-jh cups
             dosfstools dunst ffmpeg
-            ffmpegthumbnailer firefox fzf
+            ffmpegthumbnailer fzf 
             git git-lfs gitAndTools.delta gitAndTools.gh gitAndTools.git-fame
             gnome-keyring greetd.regreet hyprland kitty
             lf libnotify libreoffice
             lynx mediainfo mindustry moreutils
             mpc mpd mpv
-            ncmpcpp neomutt neovim
+            ncmpcpp neomutt
             networkmanagerapplet noto-fonts noto-fonts-emoji
             poppler pulsemixer sc-im
             simple-mtpfs slock socat
             swww tesseract unzip
             vscode wireplumber wofi
-            yt-dlp zathura zsh
+            yt-dlp zathura
         ];
     };
 }

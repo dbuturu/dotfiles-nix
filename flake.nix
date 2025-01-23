@@ -15,7 +15,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-	
+        xremaps-flake.url = "github:xremap/nix-flake";
+        
     };
 
     # All outputs for the system (configs)
@@ -66,7 +67,7 @@
                 # desktop = mkSystem inputs.nixpkgs    "x86_64-linux" "desktop";
                 # laptop-hp = mkSystem inputs.nixpkgs  "x86_64-linux" "laptop-hp";
                 # nouvelle = mkSystem inputs.nixpkgs   "x86_64-linux" "nouvelle";
-		yourComputer = mkSystem inputs.nixpkgs "x86_64-linux" "yourComputer";
+                yourComputer = mkSystem inputs.nixpkgs "x86_64-linux" "yourComputer";
             };
     };
 }

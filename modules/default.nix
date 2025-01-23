@@ -21,5 +21,6 @@
         # system
         ./xdg
 	    ./packages
+        ./xremap
     ];
 }
