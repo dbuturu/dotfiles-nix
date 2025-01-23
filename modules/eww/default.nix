@@ -14,7 +14,7 @@ in {
             eww-wayland
             pamixer
             brightnessctl
-            (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+            nerd-fonts.jetbrains-mono
         ];
 
         # configuration

@@ -18,7 +18,7 @@
             jetbrains-mono
             roboto
             openmoji-color
-            (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+            nerd-fonts.jetbrains-mono
         ];
 
         fontconfig = {
