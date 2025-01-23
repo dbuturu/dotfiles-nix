@@ -21,6 +21,7 @@
         # system
         ./xdg
 	    ./packages
+        inputs.xremaps-flake.homeManagerModules.default
         ./xremap
     ];
 }

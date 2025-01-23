@@ -6,7 +6,6 @@
       "${self}/hosts/${name}/system.nix"
       "${self}/hosts/${name}/user.nix"
       inputs.home-manager.nixosModule
-      inputs.xremaps-flake.nixosModules
     ];
   }
 )

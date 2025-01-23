@@ -7,7 +7,6 @@ in {
     options.modules.xremap = { enable = mkEnableOption "xremap;"; };
     config = mkIf cfg.enable {
         services.xremap = {
-            userName = "dbuturu";
             withHypr = true;
             config = {
                 keymap = [

@@ -21,5 +21,6 @@
         # system
         xdg.enable = true;
         packages.enable = true;
+        xremap.enable = true;
     };
 }
