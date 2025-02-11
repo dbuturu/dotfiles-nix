@@ -69,7 +69,7 @@ in {
                     "security.ssl.require_safe_negotiation" = true;
 
                     # Extra
-                    "identity.fxaccounts.enabled" = false;
+                    "identity.fxaccounts.enabled" = true;
                     "browser.search.suggest.enabled" = false;
                     "browser.urlbar.shortcuts.bookmarks" = false;
                     "browser.urlbar.shortcuts.history" = false;

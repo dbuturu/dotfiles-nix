@@ -37,7 +37,7 @@ in {
             mpc mpd mpv
             ncmpcpp neomutt
             networkmanagerapplet noto-fonts noto-fonts-emoji
-            poppler pulsemixer sc-im
+            onlyoffice-desktopeditors poppler pulsemixer sc-im
             simple-mtpfs slock socat
             swww tesseract unzip
             vscode wireplumber wofi

@@ -9,7 +9,7 @@ in {
         programs.git = {
             enable = true;
             lfs.enable = true; 
-            userName = "dbuturu";
+            userName = "Daniel Buturu";
             userEmail = "dbuturu@gmail.com";
             extraConfig = {
                 init = { defaultBranch = "main"; };

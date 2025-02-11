@@ -7,6 +7,7 @@
 
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
+    home-manager.backupFileExtension = "backup";
 
     # Laptop-specific packages (the other ones are installed in `packages.nix`)
     environment.systemPackages = with pkgs; [
@@ -15,7 +16,7 @@
 
     # Install fonts
     fonts = {
-        fonts = with pkgs; [
+        packages = with pkgs; [
             jetbrains-mono
             roboto
             openmoji-color
@@ -60,7 +61,7 @@
 
     # Boot settings: clean /tmp/, latest kernel and enable bootloader
     boot = {
-        cleanTmpDir = true;
+        tmp.cleanOnBoot= true;
         loader = {
             systemd-boot.enable = true;
             systemd-boot.editor = false;
@@ -165,9 +166,6 @@
     # Disable bluetooth, enable pulseaudio, enable opengl (for Wayland)
     hardware = {
         bluetooth.enable = true;
-        opengl = {
-            enable = true;
-        };
         graphics.enable = true;
         nvidia.modesetting.enable = true;
         uinput.enable = true;

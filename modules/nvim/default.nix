@@ -41,7 +41,7 @@ in {
                 plenary-nvim
                 {
                     plugin = zk-nvim;
-                    config = "require('zk').setup()";
+                    config = "lua require('zk').setup()";
                 }
                 {
                     plugin = jabuti-nvim;
@@ -61,14 +61,14 @@ in {
                 }
                 {
                     plugin = indent-blankline-nvim;
-                    config = "lua require('indent_blankline').setup()";
+                    config = "lua require('ibl').setup()";
                 }
                 {
                     plugin = nvim-lspconfig;
                     config = ''
                         lua << EOF
                         require('lspconfig').rust_analyzer.setup{}
-                        require('lspconfig').sumneko_lua.setup{}
+                        require('lspconfig').lua_ls.setup{}
                         require('lspconfig').rnix.setup{}
                         require('lspconfig').zk.setup{}
                         EOF
