@@ -7,7 +7,7 @@ let
     { name = "WhatsApp"; url = "https://web.whatsapp.com"; }
     { name = "Gmail"; url = "https://mail.google.com"; }
     { name = "GoogleKeep"; url = "https://keep.google.com"; }
-    { name = "Notesnook"; url = "https://app.notesnook.com"; }
+		{ name = "notesnook"; url = "https://app.notesnook.com";}
   ];
 in {
   options.modules.chromiumWebApps = {
@@ -21,21 +21,20 @@ in {
       mkdir -p "$HOME/.local/share/applications"
       mkdir -p "$HOME/.local/bin/chromium-web-apps"
 
-      for app in ${builtins.toJSON apps}; do
-        name=$(echo $app | jq -r '.name')
-        url=$(echo $app | jq -r '.url')
+      APPS_JSON='${builtins.toJSON apps}'
+      echo "$APPS_JSON" | jq -c '.[]' | while read -r app; do
+        name=$(echo "$app" | jq -r '.name')
+        url=$(echo "$app" | jq -r '.url')
         EXEC="$HOME/.local/bin/chromium-web-apps/$name"
-
         echo "#!/bin/sh" > "$EXEC"
         echo "exec ${pkgs.chromium}/bin/chromium --app=$url --new-window" >> "$EXEC"
         chmod +x "$EXEC"
-
         echo "[Desktop Entry]
-        Name=$name
-        Exec=$EXEC
-        Terminal=false
-        Type=Application
-        Categories=Network;" > "$HOME/.local/share/applications/$name.desktop"
+Name=$name
+Exec=$EXEC
+Terminal=false
+Type=Application
+Categories=Network;" > "$HOME/.local/share/applications/$name.desktop"
       done
     '';
 

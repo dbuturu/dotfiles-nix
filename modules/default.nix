@@ -10,6 +10,7 @@
         ./dunst
         ./hyprland
         ./wofi
+        ./chromium-web-apps
 
         # cli
         ./nvim
