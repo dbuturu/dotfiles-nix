@@ -10,7 +10,7 @@
         dunst.enable = true;
         hyprland.enable = true;
         wofi.enable = true;
-        electron-web-apps.enable = true;
+        chromiumWebApps.enable = true;
 
         # 
         nvim.enable = true;

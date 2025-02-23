@@ -10,7 +10,6 @@
         ./dunst
         ./hyprland
         ./wofi
-        ./electron-web-apps
 
         # cli
         ./nvim

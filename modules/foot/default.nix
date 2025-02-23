@@ -14,17 +14,17 @@ in {
                     pad = "12x12";
                 };
                 colors = {
-                    foreground = "d9e0ee";
-                    background = "292a37";
+                    foreground = "eeead6";
+                    background = "191916";
                     ## Normal/regular colors (color palette 0-7)
-                    regular0="303241";  # black
-                    regular1="ec6a88";
-                    regular2="3fdaa4";
-                    regular3="efb993";
-                    regular4="3fc6de";
-                    regular5="b771dc";
-                    regular6="6be6e6";
-                    regular7="d9e0ee";
+                    regular0="#191916";  # black
+                    regular1="#b2cbe3";
+                    regular2="#bdb2e3";
+                    regular3="#e2b2e3";
+                    regular4="#e3b2bf";
+                    regular5="#e3c9b2";
+                    regular6="#d7e3b2";
+                    regular7="#b2e3b2";
 
                     bright0="393a4d"; # bright black
                     bright1="e95678"; # bright red
