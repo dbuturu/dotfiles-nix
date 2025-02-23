@@ -1,1 +1,0 @@
-[Themes](https://github.com/drcika/apc-extension/issues/5)
