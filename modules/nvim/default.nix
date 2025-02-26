@@ -16,8 +16,6 @@ in {
     options.modules.nvim = { enable = mkEnableOption "nvim"; };
     config = mkIf cfg.enable {
 
-        home.file.".config/nvim/settings.lua".source = ./init.lua;
-        
         home.packages = with pkgs; [
             nixfmt-rfc-style # rnix-lsp # Nix
             sumneko-lua-language-server stylua # Lua
@@ -88,10 +86,6 @@ in {
                     '';
                 }
             ];
-
-            extraConfig = ''
-                luafile ~/.config/nvim/settings.lua
-            '';
         };
     };
 }
