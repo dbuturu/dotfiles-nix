@@ -22,28 +22,38 @@ in {
         home.file.".config/eww/eww.yuck".source = ./eww.yuck;
 
         # scripts
-        home.file.".config/eww/scripts/battery.sh" = {
-            source = ./scripts/battery.sh;
+        home.file.".config/eww/scripts/battery" = {
+            source = ./scripts/battery;
             executable = true;
         };
 
-        home.file.".config/eww/scripts/wifi.sh" = {
-            source = ./scripts/wifi.sh;
+        home.file.".config/eww/scripts/mem-ad" = {
+            source = ./scripts/mem-ad;
             executable = true;
         };
 
-        home.file.".config/eww/scripts/brightness.sh" = {
-            source = ./scripts/brightness.sh;
+        home.file.".config/eww/scripts/memory" = {
+            source = ./scripts/memory;
             executable = true;
         };
 
-        home.file.".config/eww/scripts/workspaces.sh" = {
-            source = ./scripts/workspaces.sh;
+        home.file.".config/eww/scripts/music_info" = {
+            source = ./scripts/music_info;
             executable = true;
         };
 
-        home.file.".config/eww/scripts/workspaces.lua" = {
-            source = ./scripts/workspaces.lua;
+        home.file.".config/eww/scripts/pop" = {
+            source = ./scripts/pop;
+            executable = true;
+        };
+
+        home.file.".config/eww/scripts/wifi" = {
+            source = ./scripts/wifi;
+            executable = true;
+        };
+
+        home.file.".config/eww/scripts/workspace" = {
+            source = ./scripts/workspace;
             executable = true;
         };
     };

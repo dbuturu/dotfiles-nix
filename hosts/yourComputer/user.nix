@@ -10,7 +10,10 @@
         dunst.enable = true;
         hyprland.enable = true;
         wofi.enable = true;
-        chromiumWebApps.enable = true;
+        chromiumApp = {
+            enable = true;
+            autostart = true;  # Set to true to launch Chromium at boot
+        };
 
         # 
         nvim.enable = true;

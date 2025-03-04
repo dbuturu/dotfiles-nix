@@ -6,8 +6,8 @@ in {
 
     config = mkIf cfg.enable {
     	home.packages = [
-	    pkgs.zsh
-	];
+	        pkgs.zsh
+	    ];
 
         programs.zsh = {
             enable = true;
@@ -50,7 +50,6 @@ in {
 
             # Set some aliases
             shellAliases = {
-                c = "clear";
                 mkdir = "mkdir -vp";
                 rm = "rm -rifv";
                 mv = "mv -iv";
@@ -60,20 +59,30 @@ in {
                 tree = "exa --tree --icons";
                 nd = "nix develop -c $SHELL";
                 rebuild = "doas nixos-rebuild switch --flake $NIXOS_CONFIG_DIR --fast; notify-send 'Rebuild complete\!'";
+
+                # Chromium web app aliases
+                notesnook = "${pkgs.chromium}/bin/chromium --app=https://app.notesnook.com";
+                keep = "${pkgs.chromium}/bin/chromium --app=https://keep.google.com";
+                gmail = "${pkgs.chromium}/bin/chromium --app=https://gmail.google.com";
+                uopeople = "${pkgs.chromium}/bin/chromium --app=https://my.uopeople.edu";
+                messeseges = "${pkgs.chromium}/bin/chromium --app=https://messages.google.com";
+                whatsapp = "${pkgs.chromium}/bin/chromium --app=https://web.whatsapp.com";
+                youtube = "${pkgs.chromium}/bin/chromium --app=https://youtube.com";
+                netflix = "${pkgs.chromium}/bin/chromium --app=https://netflix.com";
             };
 
             # Source all plugins, nix-style
             plugins = [
-            {
-                name = "auto-ls";
-                src = pkgs.fetchFromGitHub {
-                    owner = "notusknot";
-                    repo = "auto-ls";
-                    rev = "62a176120b9deb81a8efec992d8d6ed99c2bd1a1";
-                    sha256 = "08wgs3sj7hy30x03m8j6lxns8r2kpjahb9wr0s0zyzrmr4xwccj0";
-                };
-            }
-        ];
+                {
+                    name = "auto-ls";
+                    src = pkgs.fetchFromGitHub {
+                        owner = "notusknot";
+                        repo = "auto-ls";
+                        rev = "62a176120b9deb81a8efec992d8d6ed99c2bd1a1";
+                        sha256 = "08wgs3sj7hy30x03m8j6lxns8r2kpjahb9wr0s0zyzrmr4xwccj0";
+                    };
+                }
+            ];
+        };
     };
-};
 }

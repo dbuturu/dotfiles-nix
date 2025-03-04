@@ -1,8 +1,8 @@
-sudo nix-collect-garbage -d
-sudo nix store verify --all
-sudo nix store repair --all
+doas nix-collect-garbage -d
+doas nix store verify --all
+doas nix store repair --all
 cd $NIXOS_CONFIG_DIR 
 nix flake update
-sudo nixos-rebuild switch --flake . --upgrade
+doas nixos-rebuild switch --flake . --upgrade
 nix run nixpkgs#bleachbit
 nix run nixpkgs#pcmanfm

@@ -177,7 +177,16 @@
         # Whether to enable XWayland
         xwayland.enable = true;
     };
-    programs.regreet.enable=true;
+
+    programs.regreet = {
+        enable = true;
+        settings = {
+            keyboardLayout = "jp";
+            theme = "Adwaita-dark";
+            # You can add other styling or configuration options here.
+        };
+    };
+
 
     services.avahi = {
         enable = true;
