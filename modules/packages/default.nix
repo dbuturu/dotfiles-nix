@@ -27,7 +27,7 @@ in {
             #zathura-pdf-mupdf #zsh-fast-syntax-highlighting-git abook
             ani-cli arandr atool
             bc bluetui btop
-            calcurse clipboard-jh cups
+            calcurse corefonts clipboard-jh cups
             dosfstools dunst ffmpeg
             ffmpegthumbnailer fzf 
             git git-lfs gitAndTools.delta gitAndTools.gh gitAndTools.git-fame

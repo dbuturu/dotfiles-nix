@@ -6,14 +6,10 @@
         # gui
         firefox.enable = true;
         foot.enable = true;
-        eww.enable = true;
+        eww.enable = false;
         dunst.enable = true;
         hyprland.enable = true;
         wofi.enable = true;
-        chromiumApp = {
-            enable = true;
-            autostart = true;  # Set to true to launch Chromium at boot
-        };
 
         # 
         nvim.enable = true;
