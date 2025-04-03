@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }:
 with lib;
 let
-    cfg = config.modules.eww;
+    cfg = config.modules.firefox;
 
 in {
     options.modules.firefox = { enable = mkEnableOption "firefox"; };
@@ -9,21 +9,18 @@ in {
     config = mkIf cfg.enable {
         programs.firefox = {
             enable = true;
-
-            # Install extensions from NUR
-            
-
-            # Privacy about:config settings
             profiles.dbuturu = {
-                extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-                    decentraleyes
-                    ublock-origin
-                    clearurls
-                    sponsorblock
-                    darkreader
-                    h264ify
-                    df-youtube
-                ];
+                # Install extensions from NUR
+                # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+                #     decentraleyes
+                #     ublock-origin
+                #     clearurls
+                #     sponsorblock
+                #     darkreader
+                #     h264ify
+                #     df-youtube
+                # ];
+                # Privacy about:config settings
                 settings = {
                     "browser.send_pings" = false;
                     "browser.urlbar.speculativeConnect.enabled" = false;

@@ -12,9 +12,8 @@ in {
     config = mkIf cfg.enable {
     	home.packages = with pkgs; [
             ripgrep tealdeer
-            eza htop
             pass gnupg bat
-            lowdown zk
+            lowdown
             grim slurp slop
             imagemagick age
             python3 lua zig  pqiv
@@ -28,8 +27,8 @@ in {
             ani-cli arandr atool
             bc bluetui btop
             calcurse corefonts clipboard-jh cups
-            dosfstools dunst ffmpeg
-            ffmpegthumbnailer fzf 
+            dosfstools dunst eza ffmpeg
+            ffmpegthumbnailer firefox fzf 
             git git-lfs gitAndTools.delta gitAndTools.gh gitAndTools.git-fame
             gnome-keyring greetd.regreet hyprland kitty
             lf libnotify libreoffice
@@ -41,7 +40,7 @@ in {
             simple-mtpfs slock socat
             swww tesseract unzip
             vscode wireplumber wofi
-            yt-dlp zathura
+            yt-dlp zathura zk
         ];
     };
 }
