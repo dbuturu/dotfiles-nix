@@ -4,12 +4,12 @@
     imports = [ ../../modules/default.nix ];
     config.modules = {
         # gui
-        firefox.enable = true;
+        firefox.enable = false;
         foot.enable = true;
-        eww.enable = false;
         dunst.enable = true;
         hyprland.enable = true;
         wofi.enable = true;
+        winbox4.enable = true;
 
         # 
         nvim.enable = true;

@@ -6,10 +6,10 @@
         # gui
         ./firefox
         ./foot
-        ./eww
         ./dunst
         ./hyprland
         ./wofi
+        ./winbox4
 
         # cli
         ./nvim
