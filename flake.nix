@@ -48,10 +48,11 @@
                                 extraSpecialArgs = { inherit inputs; };
                                 # Home manager config (configures programs like firefox, zsh, eww, etc)
                                 users.dbuturu = (./. + "/hosts/${hostname}/user.nix");
+                                backupFileExtension = "backup";
                             };
                             nixpkgs.overlays = [
                                 # Add nur overlay for Firefox addons
-                                nur.overlay
+                                # nur.overlay
                                 (import ./overlays)
                             ];
                         }
