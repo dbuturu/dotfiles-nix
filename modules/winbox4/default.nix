@@ -4,29 +4,23 @@ with lib;
 
 let
   cfg = config.modules.winbox4;
-  winboxUrl = "https://download.mikrotik.com/winbox/4.0beta11/winbox64.exe"; # Update if necessary
-  winboxPath = "${config.xdg.dataHome}/winbox4";
 in {
   options.modules.winbox4.enable = mkEnableOption "Winbox 4";
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ wine64 ];
+    home.packages = with pkgs; [ winbox4 ];
 
-    home.file."${winboxPath}/winbox64.exe" = {
-      source = builtins.fetchurl {
-        url = winboxUrl;
-        sha256 = "<replace-with-correct-hash>"; # Use `nix-prefetch-url` to get the hash
-      };
-    };
-
-    home.file."${config.xdg.desktopEntries}/winbox4.desktop" = {
+    # Create a shell wrapper to run Winbox using the command `winbox`
+    home.file.".local/bin/winbox" = {
+      executable = true;
       text = ''
-        [Desktop Entry]
-        Name=Winbox 4
-        Exec=wine64 ${winboxPath}/winbox64.exe
-        Type=Application
-        Categories=Network;
+        #!/bin/sh
+        exec ${pkgs.winbox4}/bin/WinBox "$@"
       '';
     };
+
+    # Ensure the custom bin directory is in PATH
+    home.sessionPath = [ "$HOME/.local/bin" ];
   };
 }
+6

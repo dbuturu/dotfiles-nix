@@ -36,10 +36,10 @@ in {
             mpc mpd mpv
             ncmpcpp neomutt
             networkmanagerapplet noto-fonts noto-fonts-emoji
-            onlyoffice-desktopeditors poppler pulsemixer sc-im
+            onlyoffice-desktopeditors poppler pulsemixer qpwgraph sc-im
             simple-mtpfs slock socat
             swww tesseract unzip
-            vscode wireplumber wofi
+            vscode winbox4 wireplumber wofi
             yt-dlp zathura zk
         ];
     };
