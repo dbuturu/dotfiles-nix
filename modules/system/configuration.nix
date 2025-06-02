@@ -180,13 +180,8 @@
 
     programs.regreet = {
         enable = true;
-        settings = {
-            keyboardLayout = "jp";
-            theme = "Adwaita-dark";
-            # You can add other styling or configuration options here.
-        };
+        theme.name = "Adwaita-dark";
     };
-
 
     services.avahi = {
         enable = true;
