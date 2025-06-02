@@ -23,4 +23,3 @@ in {
     home.sessionPath = [ "$HOME/.local/bin" ];
   };
 }
-6
