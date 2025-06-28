@@ -6,13 +6,14 @@
         # gui
         firefox.enable = false;
         foot.enable = false;
-        st.enable = true;
+        st.enable = false;
+        ghostty.enable = true; # ghostty terminal emulator
         dunst.enable = true;
         hyprland.enable = true;
         wofi.enable = true;
         winbox4.enable = true;
 
-        # 
+        # cli
         nvim.enable = true;
         zsh.enable = true;
         git.enable = true;

@@ -7,6 +7,7 @@
         ./firefox
         ./foot
         ./st
+        ./ghostty
         ./dunst
         ./hyprland
         ./wofi
