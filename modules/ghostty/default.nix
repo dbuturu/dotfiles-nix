@@ -10,6 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.ghostty ];
+    home.packages = [ pkgs.ghostty ];
   };
 }

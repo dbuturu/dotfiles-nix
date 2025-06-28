@@ -176,9 +176,6 @@
             nvidiaSettings = true;
             package = config.boot.kernelPackages.nvidiaPackages.stable;
         };
-        opengl = {
-            enable = true;
-        };
         # If you want to use PRIME offloading (for hybrid graphics laptops)
         nvidia.prime = {
             sync.enable = true;
