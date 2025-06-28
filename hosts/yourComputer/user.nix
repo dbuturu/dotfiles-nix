@@ -5,7 +5,8 @@
     config.modules = {
         # gui
         firefox.enable = false;
-        foot.enable = true;
+        foot.enable = false;
+        st.enable = true;
         dunst.enable = true;
         hyprland.enable = true;
         wofi.enable = true;
