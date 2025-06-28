@@ -12,6 +12,7 @@
     # Laptop-specific packages (the other ones are installed in `packages.nix`)
     environment.systemPackages = with pkgs; [
         acpi tlp git
+        gnome-themes-extra adwaita-icon-theme
     ];
 
     # Install fonts
@@ -167,7 +168,23 @@
     hardware = {
         bluetooth.enable = true;
         graphics.enable = true;
-        nvidia.modesetting.enable = true;
+        # Enable NVIDIA proprietary driver
+        nvidia = {
+            modesetting.enable = true;
+            powerManagement.enable = true;
+            open = false; # Use proprietary driver (recommended for 940MX)
+            nvidiaSettings = true;
+            package = config.boot.kernelPackages.nvidiaPackages.stable;
+        };
+        opengl = {
+            enable = true;
+        };
+        # If you want to use PRIME offloading (for hybrid graphics laptops)
+        nvidia.prime = {
+            sync.enable = true;
+            intelBusId = "PCI:0:2:0";    # Replace with your Intel GPU BusID
+            nvidiaBusId = "PCI:1:0:0";   # Replace with your NVIDIA GPU BusID
+        };
         uinput.enable = true;
     };
 
@@ -182,6 +199,8 @@
         enable = true;
         theme.name = "Adwaita-dark";
     };
+
+    environment.variables.GTK_THEME = "Adwaita-dark";  # Optional fallback
 
     services.avahi = {
         enable = true;
