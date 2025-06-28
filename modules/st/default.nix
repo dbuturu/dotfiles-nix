@@ -13,18 +13,24 @@ in {
     home.packages = with pkgs; [
       (stdenv.mkDerivation {
         pname = "st-lukesmithxyz";
-        version = "2025-06-28"; # You can update this based on the commit date or a specific release
+        version = "2024-03-12"; # Updated to match the new commit date
 
         # Fetch the source code from GitHub
         src = fetchFromGitHub {
           owner = "lukesmithxyz";
           repo = "st";
-          rev = "62ebf672322307137f225ec0d3d3a1fb4d2572b9"; # Using a specific commit hash for stability
+          rev = "62ebf677d3ad79e0596ff610127df5db034cd234"; # Updated to a valid, recent commit
           # IMPORTANT: Replace this with the actual SHA256 hash after the first build.
           # You can get the correct hash by setting it to "lib.fakeSha256" and running nix-build.
           # The error message will provide the correct hash.
-          sha256 = lib.fakeSha256;
+          sha256 = "sha256-L4FKnK4k2oImuRxlapQckydpAAyivwASeJixTj+iFrM=";
         };
+
+        # Tools required to build the package.
+        nativeBuildInputs = [
+          pkgs.pkg-config
+          pkgs.ncurses # for the 'tic' command
+        ];
 
         # Build inputs required for st (X11 libraries, font rendering)
         buildInputs = with xorg; [
@@ -32,22 +38,22 @@ in {
           libXft
           libXrandr
           fontconfig # For font configuration
+          freetype   # For font rendering
           harfbuzz # For text shaping
         ];
 
-        # Standard build phases for a C program using make
-        buildPhase = ''
-          # You might want to edit config.h before building if you need custom patches or settings.
-          # For example, to set default font or colors:
-          # cp config.def.h config.h
-          # sed -i 's/"monospace:pixelsize=14:antialias=true:autohint=true"/"Fira Mono:pixelsize=12:antialias=true:autohint=true"/' config.h
-          make
+        # The `tic` command tries to write to the user's home directory by default.
+        # In the sandboxed build environment, this fails due to permissions.
+        # We patch the Makefile to tell `tic` to install the terminfo files
+        # into the correct location within the package's output directory.
+        postPatch = ''
+          substituteInPlace Makefile --replace "tic -sx st.info" "tic -sx -o \${PREFIX}/share/terminfo st.info"
         '';
 
-        installPhase = ''
-          mkdir -p $out/bin
-          make install PREFIX=$out
-        '';
+        # The standard build process for `st` uses `make` and `make install`.
+        # We can rely on the default build- and install-phases from stdenv,
+        # but we must tell `make` where to install the files by setting the PREFIX variable.
+        makeFlags = [ "PREFIX=${placeholder "out"}" ];
 
         # Add any other required dependencies if 'make' fails due to missing headers/libraries.
         meta = with lib; {
