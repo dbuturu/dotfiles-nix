@@ -23,6 +23,7 @@
 
         xremaps-flake.url = "github:xremap/nix-flake";
         
+        hyprriver.url = "github:zakk4223/hyprRiver";
     };
 
     # All outputs for the system (configs)
