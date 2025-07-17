@@ -10,7 +10,7 @@ in {
             enable = true;
             settings = {
                 main = {
-                    font = "JetBrainsMono Nerdfont:size=7";
+                    font = "Fira Code Nerdfont:size=7";
                     pad = "12x12";
                     key-bindings = [
                         {

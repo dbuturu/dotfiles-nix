@@ -1,6 +1,6 @@
 configuration {
   modes: "window,drun,run,ssh";
-  font: "JetBrainsMono NF 18";
+  font: "Fira Code 18";
   drun-display-format: "{name}";
 }
 
