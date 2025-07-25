@@ -5,6 +5,8 @@
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         hyprland.url = "github:hyprwm/Hyprland";
+        xremaps-flake.url = "github:xremap/nix-flake";
+        #hyprriver.url = "github:zakk4223/hyprRiver";
 
         home-manager = {
             url = "github:nix-community/home-manager";
@@ -20,10 +22,6 @@
             url = "github:nix-community/NUR";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
-        xremaps-flake.url = "github:xremap/nix-flake";
-        
-        hyprriver.url = "github:zakk4223/hyprRiver";
     };
 
     # All outputs for the system (configs)
