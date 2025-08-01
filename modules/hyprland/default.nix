@@ -26,15 +26,9 @@ in
       xwayland.enable = true;
 
       plugins = [
-        (pkgs.callPackage ./hyprriver.nix { hyprlandPlugins = pkgs.hyprlandPlugins; hyprland = pkgs.hyprland; })
+        #(pkgs.callPackage ./hyprriver.nix { hyprlandPlugins = pkgs.hyprlandPlugins; hyprland = pkgs.hyprland; })
+        (pkgs.callPackage ./hy3.nix {})
       ];  # Add any additional plugins here
-
-      #pluginsConfig = {
-      #  hyprriver = {
-      #    enable = true;
-      #    package = inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprriver;
-      #  };
-      #};
 
       settings = {
         monitor = [ "eDP-1,1920x1080@60,0x0,1" ];
@@ -113,7 +107,6 @@ in
           "$mainMod,q,killactive,"
           "$mainMod,v,togglefloating,"
           "$mainMod,d,exec,wofi --show run --term=ghostty --prompt=Run" # Application launcher
-          "$mainMod SHIFT,d,exec,wofi-terminal-launcher" # Custom terminal commands
           "$mainMod,n,exec,cd ~/notes && ghostty -a foot-notes sh -c \"nvim ~/notes/$(date '+%Y-%m-%d').md\""
           "$mainMod,f,fullscreen,0"
           "$mainMod,p,pseudo,"
