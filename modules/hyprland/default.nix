@@ -6,9 +6,9 @@ let
   hyprland-plugins = inputs.hyprland-plugins;
 in
 {
-  options.modules.hyprland.enable = mkEnableOption "hyprland";
+  options.modules.hyprland.enable = lib.mkEnableOption "hyprland";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     # Packages that don't have a dedicated module or don't need one.
     # hyprland, dunst, wofi, ghostty and pipewire are installed via their modules.
     home.packages = with pkgs; [
@@ -18,6 +18,7 @@ in
       brightnessctl
       playerctl
       grimblast
+      wlogout # A wofi-based logout menu
     ];
 
     wayland.windowManager.hyprland = {
@@ -31,7 +32,9 @@ in
       ];  # Add any additional plugins here
 
       settings = {
-        monitor = [ "eDP-1,1920x1080@60,0x0,1" ];
+        # Using a more generic monitor configuration makes it more portable.
+        # The original was: "eDP-1,1920x1080@60,0x0,1"
+        monitor = [ ",preferred,auto,1" ];
 
         input = {
           kb_layout = "jp";
@@ -43,13 +46,14 @@ in
         };
 
         general = {
-          windowrulev2 = [ "noblur,class:^()$,title:^()$" ];
           gaps_in = 10;
           gaps_out = 10;
           border_size = 3;
           resize_on_border = false;
           allow_tearing = false;
           layout = "dwindle";
+          "col.active_border" = "rgba(b6412dcc) rgba(ff4200cc) 45deg";
+          "col.inactive_border" = "rgba(595959aa)";
         };
 
         decoration = {
@@ -57,10 +61,11 @@ in
           active_opacity = 0.85;
           inactive_opacity = 0.75;
           fullscreen_opacity = 1.0;
-          shadow = {
+          # `shadow` is deprecated, use `drop_shadow` instead
+          drop_shadow = {
             enabled = true;
-            range = 4;
-            render_power = 3;
+            size = 4;
+            power = 3;
             color = "rgba(1a1a1aee)";
           };
           blur = {
