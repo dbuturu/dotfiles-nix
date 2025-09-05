@@ -1,43 +1,59 @@
 #!/usr/bin/env bash
 
 # This script helps me to take screenshots and record my desktop.
-# Dependencies: wofi, wf-recorder, slurp, grim 
+# Dependencies: wofi, wf-recorder, slurp, grim, notify-send, wl-copy, identify, pqiv
+
+# --- Configuration ---
+SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
+SCREENCAST_DIR="$HOME/Videos/Screencasts"
+
+PRE_CAPTURE_DELAY=3
+PREVIEW_DURATION=4
+
+# --- Script ---
+mkdir -p "$SCREENSHOT_DIR"
+mkdir -p "$SCREENCAST_DIR"
 
 declare -a options=(
+"Take screenshot"
 "Record screencast"
 "Stop screencast"
-"Take screenshot"
 )
 
-choice=$(printf '%s\n' "${options[@]}" | wofi --style=$HOME/.config/wofi.css --dmenu -i -p 'Choose script:' 2>/dev/null )
+choice=$(printf '%s\n' "${options[@]}" | wofi --style="$HOME/.config/wofi.css" --dmenu -i -p 'Screen Capture:' 2>/dev/null )
 
-if [ "$choice" = "Take screenshot" ]; then 
-    geometry=$(slurp)
-    notify-send "Screenshot in 3 seconds..."
-    rm -rf $HOME/screen.png
-    sleep 3
-    grim -g "$geometry" - > $HOME/screen.png
-    wl-copy $HOME/screen.png -t image/png
-    notify-send "Screenshot taken!"
-    read -r W H <<< $(identify -format "%w %h\n" ~/screen.png)
-    if [ "$W" -gt "300" ] || [ "$H" -gt "300" ]; then
-        pqiv ~/screen.png -z 0.45 &
-    else 
-        pqiv ~/screen.png &
-    fi 
-    sleep 3
-    pkill pqiv 
-elif [ "$choice" = "Record screencast" ]; then
-    rm -rf $HOME/recording.mp4
-    geometry=$(slurp)
-    notify-send "Screen recording in 3 seconds..."
-    sleep 3
-    notify-send "Screen recording started"
-    wf-recorder -g "$geometry"
-    mv recording.mp4 $HOME/
-elif [ "$choice" = "Stop screencast" ]; then
-    pkill -SIGINT wf-recorder
-    notify-send "Screen recording saved to ~/recording.mp4"
-else 
-    exit 1
-fi
+case "$choice" in
+    "Take screenshot")
+        geometry=$(slurp)
+        [ -z "$geometry" ] && exit 1
+
+        notify-send "Screenshot in $PRE_CAPTURE_DELAY seconds..."
+        sleep "$PRE_CAPTURE_DELAY"
+
+        screenshot_file="$SCREENSHOT_DIR/$(date +'%Y-%m-%d-%H%M%S').png"
+        grim -g "$geometry" "$screenshot_file"
+        wl-copy < "$screenshot_file"
+
+        notify-send "Screenshot taken!" "Saved to $screenshot_file and copied to clipboard."
+
+        # Preview the image
+        pqiv "$screenshot_file" &
+        sleep "$PREVIEW_DURATION"
+        pkill pqiv
+        ;;
+    "Record screencast")
+        geometry=$(slurp)
+        [ -z "$geometry" ] && exit 1
+
+        notify-send "Screen recording in $PRE_CAPTURE_DELAY seconds..."
+        sleep "$PRE_CAPTURE_DELAY"
+
+        screencast_file="$SCREENCAST_DIR/$(date +'%Y-%m-%d-%H%M%S').mp4"
+        notify-send "Screen recording started" "Saving to $screencast_file"
+        wf-recorder -g "$geometry" -f "$screencast_file"
+        ;;
+    "Stop screencast")
+        pkill -SIGINT wf-recorder
+        notify-send "Screen recording stopped" "Video saved in $SCREENCAST_DIR"
+        ;;
+esac
