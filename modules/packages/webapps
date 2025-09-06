@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# This script helps you launch web apps in Chromium's app mode.
+# Dependencies: wofi, chromium
+
+# --- Configuration ---
+declare -A webapps=(
+    ["Gmail"]="https://mail.google.com/"
+    ["Calendar"]="https://calendar.google.com/"
+    ["YouTube"]="https://www.youtube.com/"
+    ["Keep"]="https://keep.google.com/"
+    ["Notesnook"]="https://notesnook.com/"
+    ["Messages"]="https://messages.google.com/"
+    ["Drive"]="https://drive.google.com/"
+    ["Docs"]="https://docs.google.com/"
+    ["Sheets"]="https://sheets.google.com/"
+    ["WhatsApp"]="https://web.whatsapp.com/"
+		["Telegram"]="https://web.telegram.org/"
+		["Slack"]="https://slack.com/signin"
+		["Discord"]="https://discord.com/app"
+		["Twitter"]="https://twitter.com/home"
+		["Facebook"]="https://www.facebook.com/"
+		["Reddit"]="https://www.reddit.com/"
+		["LinkedIn"]="https://www.linkedin.com/feed/"
+		["Instagram"]="https://www.instagram.com/"
+)
+
+declare -a options=("${!webapps[@]}")
+
+choice=$(printf '%s\n' "${options[@]}" | wofi --style="$HOME/.config/wofi.css" --dmenu -i -p 'Web App:' 2>/dev/null )
+
+if [[ -n "$choice" && -n "${webapps[$choice]}" ]]; then
+    chromium --app="${webapps[$choice]}" &
+else
+    exit
