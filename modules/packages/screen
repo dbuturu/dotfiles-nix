@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 # This script helps me to take screenshots and record my desktop.
-# Dependencies: wofi, wf-recorder, slurp, grim, notify-send, wl-copy, identify, pqiv
+# Dependencies: wofi, wf-recorder, slurp, grim, notify-send, wl-copy, pqiv
 
 # --- Configuration ---
 SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 SCREENCAST_DIR="$HOME/Videos/Screencasts"
+SCREENCAST_PID_FILE="/tmp/screencast.pid"
 
-PRE_CAPTURE_DELAY=3
+PRE_CAPTURE_DELAY=2
 PREVIEW_DURATION=4
 
 # --- Script ---
@@ -35,25 +36,38 @@ case "$choice" in
         wl-copy < "$screenshot_file"
 
         notify-send "Screenshot taken!" "Saved to $screenshot_file and copied to clipboard."
-
+ 
         # Preview the image
         pqiv "$screenshot_file" &
+        pqiv_pid=$!
         sleep "$PREVIEW_DURATION"
-        pkill pqiv
+        # Kill only the specific pqiv process we started
+        kill "$pqiv_pid" 2>/dev/null
         ;;
     "Record screencast")
+        if pgrep -x wf-recorder > /dev/null; then
+            notify-send "A screen recording is already in progress."
+            exit 1
+        fi
+
         geometry=$(slurp)
         [ -z "$geometry" ] && exit 1
 
         notify-send "Screen recording in $PRE_CAPTURE_DELAY seconds..."
         sleep "$PRE_CAPTURE_DELAY"
 
-        screencast_file="$SCREENCAST_DIR/$(date +'%Y-%m-%d-%H%M%S').mp4"
+        screencast_file="$SCREENCAST_DIR/$(date +'%Y-%m-%d-%H%M%S').mkv"
+        # Run in background and save PID
+        wf-recorder -g "$geometry" -f "$screencast_file" &
+        echo $! > "$SCREENCAST_PID_FILE"
+        echo "$screencast_file" >> "$SCREENCAST_PID_FILE"
         notify-send "Screen recording started" "Saving to $screencast_file"
-        wf-recorder -g "$geometry" -f "$screencast_file"
         ;;
     "Stop screencast")
-        pkill -SIGINT wf-recorder
-        notify-send "Screen recording stopped" "Video saved in $SCREENCAST_DIR"
+        recorder_pid=$(sed -n '1p' "$SCREENCAST_PID_FILE")
+        screencast_file=$(sed -n '2p' "$SCREENCAST_PID_FILE")
+        kill -SIGINT "$recorder_pid"
+        rm "$SCREENCAST_PID_FILE"
+        notify-send "Screen recording stopped" "Video saved as $screencast_file"
         ;;
 esac
