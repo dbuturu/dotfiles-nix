@@ -37,7 +37,7 @@ in {
             #task-spooler #tesseract-data-eng #ttf-dejavu #ttf-font-awesome
             unzip
             vscode
-            wf-recorder winbox4 wireplumber wofi
+            webapps wf-recorder winbox4 wireplumber wofi
             yt-dlp
             zathura zig zip zk
             #zathura-pdf-mupdf #zsh-fast-syntax-highlighting-git 
