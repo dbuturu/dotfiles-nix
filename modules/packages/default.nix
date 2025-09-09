@@ -6,6 +6,12 @@ let cfg =
     screen = pkgs.writeShellScriptBin "screen" ''${builtins.readFile ./screen}'';
     bandw = pkgs.writeShellScriptBin "bandw" ''${builtins.readFile ./bandw}'';
     maintenance = pkgs.writeShellScriptBin "maintenance" ''${builtins.readFile ./maintenance}'';
+    # /home/dbuturu/.config/nixos/modules/packages/default.nix
+    webapps = pkgs.writeShellApplication {
+      name = "webapps";
+      runtimeInputs = with pkgs; [ wofi chromium ];
+      text = builtins.readFile ./webapps;
+    };
 
 in {
     options.modules.packages = { enable = mkEnableOption "packages"; };

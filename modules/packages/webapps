@@ -15,14 +15,14 @@ declare -A webapps=(
     ["Docs"]="https://docs.google.com/"
     ["Sheets"]="https://sheets.google.com/"
     ["WhatsApp"]="https://web.whatsapp.com/"
-		["Telegram"]="https://web.telegram.org/"
-		["Slack"]="https://slack.com/signin"
-		["Discord"]="https://discord.com/app"
-		["Twitter"]="https://twitter.com/home"
-		["Facebook"]="https://www.facebook.com/"
-		["Reddit"]="https://www.reddit.com/"
-		["LinkedIn"]="https://www.linkedin.com/feed/"
-		["Instagram"]="https://www.instagram.com/"
+	["Telegram"]="https://web.telegram.org/"
+	["Slack"]="https://slack.com/signin"
+	["Discord"]="https://discord.com/app"
+	["Twitter"]="https://twitter.com/home"
+	["Facebook"]="https://www.facebook.com/"
+	["Reddit"]="https://www.reddit.com/"
+	["LinkedIn"]="https://www.linkedin.com/feed/"
+	["Instagram"]="https://www.instagram.com/"
 )
 
 declare -a options=("${!webapps[@]}")
@@ -33,3 +33,4 @@ if [[ -n "$choice" && -n "${webapps[$choice]}" ]]; then
     chromium --app="${webapps[$choice]}" &
 else
     exit
+fi
