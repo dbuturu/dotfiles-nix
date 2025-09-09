@@ -39,12 +39,13 @@
                     system = system;
                     modules = [
                         { networking.hostName = hostname; }
-                        ./hosts/yourComputer/hardware-configuration.nix
                         # General configuration (users, networking, sound, etc)
                         ./modules/system/configuration.nix
                         # Hardware config (bootloader, kernel modules, filesystems, etc)
                         # DO NOT USE MY HARDWARE CONFIG!! USE YOUR OWN!!
                         # (./. + "/hosts/${hostname}/hardware-configuration.nix")
+                        # ./hosts/yourComputer/hardware-configuration.nix
+                        (./. + "/hosts/${hostname}/hardware-configuration.nix")
                         home-manager.nixosModules.home-manager
                         {
                             home-manager = {
