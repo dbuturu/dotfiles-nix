@@ -14,7 +14,6 @@
         winbox4.enable = true;
 
         # cli
-        nvim.enable = true;
         zsh.enable = true;
         git.enable = true;
         gpg.enable = true;

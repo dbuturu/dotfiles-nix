@@ -14,7 +14,6 @@
         ./winbox4
 
         # cli
-        ./nvim
         ./zsh
         ./git
         ./gpg
