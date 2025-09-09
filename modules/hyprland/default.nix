@@ -28,7 +28,7 @@ in
 
       plugins = [
         #(pkgs.callPackage ./hyprriver.nix { hyprlandPlugins = pkgs.hyprlandPlugins; hyprland = pkgs.hyprland; })
-        (pkgs.callPackage ./hy3.nix {})
+        #(pkgs.callPackage ./hy3.nix {})
       ];  # Add any additional plugins here
 
       settings = {
@@ -62,12 +62,12 @@ in
           inactive_opacity = 0.75;
           fullscreen_opacity = 1.0;
           # `shadow` is deprecated, use `drop_shadow` instead
-          drop_shadow = {
-            enabled = true;
-            size = 4;
-            power = 3;
-            color = "rgba(1a1a1aee)";
-          };
+          #drop_shadow = {
+          #  enabled = true;
+          #  size = 4;
+          #  power = 3;
+          #  color = "rgba(1a1a1aee)";
+          #};
           blur = {
             enabled = true;
             size = 10;
