@@ -22,6 +22,10 @@
             url = "github:nix-community/NUR";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        nvim = {
+            url = "github:dbuturu/nvim";
+        };
     };
 
     # All outputs for the system (configs)
