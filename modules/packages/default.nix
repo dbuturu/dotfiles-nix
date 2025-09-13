@@ -29,7 +29,7 @@ in {
             hyprland
             #hyprpaper
             imagemagick
-            lf libnotify libreoffice lowdown lua lynx
+            lf libnotify libreoffice logisim lowdown lua lynx
             #libertinus-font 
             maintenance mediainfo mindustry moreutils mutt-wizard mpc mpd mpv 
             #maim #"can take quick screenshots at your request."
