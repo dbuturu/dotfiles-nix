@@ -25,7 +25,7 @@ in {
             eza
             #exfat-utils
             ffmpeg ffmpegthumbnailer firefox fzf 
-            git git-lfs gitAndTools.delta gitAndTools.gh gitAndTools.git-fame gnome-keyring gnupg greetd.regreet grim 
+            git git-lfs gitAndTools.delta gitAndTools.gh gitAndTools.git-fame gnome-keyring gnupg regreet grim 
             hyprland
             #hyprpaper
             imagemagick
