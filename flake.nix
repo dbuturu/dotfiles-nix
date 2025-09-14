@@ -26,6 +26,8 @@
         nvim = {
             url = "github:dbuturu/nvim";
         };
+
+        nixvim.url = "github:mikaelfangel/nixvim-config";
     };
 
     # All outputs for the system (configs)

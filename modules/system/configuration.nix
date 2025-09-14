@@ -13,6 +13,7 @@
     environment.systemPackages = with pkgs; [
         acpi tlp git
         gnome-themes-extra adwaita-icon-theme
+        inputs.nixvim.packages.${system}.default
     ];
 
     # Install fonts
