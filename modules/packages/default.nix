@@ -20,7 +20,7 @@ in {
             abook age ani-cli anki-bin aria2 arandr atool android-tools
             #arkenfox-user.js 
             bat bandw bc bluetui btop
-            calcurse corefonts clipboard-jh cups
+            calcurse chafa corefonts clipboard-jh cups
             dosfstools dunst
             eza
             #exfat-utils

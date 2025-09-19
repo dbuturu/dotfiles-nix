@@ -91,22 +91,14 @@
             git-absorb    # Auto-squash feature branch commits
             git-extras    # Additional Git commands
             git-open      # Open repository in browser
+            nextdns
         ];
     };
     
     # Enable networking
     networking.networkmanager.enable = true;
   
-    networking.nameservers = [ "45.90.28.0#f6f6f3.dns.nextdns.io" "45.90.30.0#f6f6f3.dns.nextdns.io" ];
 
-    services.resolved = {
-        enable = true;
-        dnssec = "true";
-        domains = [ "~." ];
-        fallbackDns = [ "45.90.28.0#f6f6f3.dns.nextdns.io" "45.90.30.0#f6f6f3.dns.nextdns.io" ];
-        dnsovertls = "true";
-    };
- 
     # Set up networking and secure it
     networking = {
         wireless.iwd.enable = true;
@@ -208,7 +200,20 @@
         nssmdns4 = true;
         openFirewall = true;
     };
-    
+
+    services.nextdns = {
+        enable = true;
+        arguments = [ "-config" "f6f6f3" "-cache-size" "10MB" ];
+    };
+
+    systemd.services.nextdns-activate = {
+        script = ''
+            /run/current-system/sw/bin/nextdns activate
+        '';
+        after = [ "nextdns.service" ];
+        wantedBy = [ "multi-user.target" ];
+    };
+
     services.printing.enable = true;
 
     # Do not touch
